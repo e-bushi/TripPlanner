@@ -15,7 +15,7 @@ class TripsNetworking {
     var status: Int?
     
     //OPTIONAL TO STORE USERS
-    var user: Data?
+    var trip: Data?
     
     //SET UP SESSION
     let session = URLSession.shared
@@ -45,7 +45,7 @@ class TripsNetworking {
             self.status = code.statusCode
             
             guard let postedUser = data else {return}
-            self.user = postedUser
+            self.trip = postedUser
         }
         
         task.resume()
@@ -64,9 +64,39 @@ class TripsNetworking {
         //INITIATE TASK
         let task = session.dataTask(with: request) { (data, _, _) in
             guard let fetchedUser = data else {return}
-            self.user = fetchedUser
+            self.trip = fetchedUser
         }
         
         task.resume()
     }
+    
+    func patch(trip: Trip, resource: Resource, completion: @escaping (Trip)->()) {
+        //SET UP EXTENDED PATH
+        let fullURL = baseURL?.appendingPathComponent(resource.urlPath())
+        
+        //SET UP REQUEST
+        var request = URLRequest(url: fullURL!)
+        
+        //CREATE HTTPBODY FIELD THAT HOLDS NEW TRIP POST
+        let body = resource.tripPatchBody(trip: trip)
+        
+        //JSONIFY BODY
+        let jsonBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        
+        //ADD JSONBODY TO HTTPBODY FIELD IN REQUEST
+        request.httpBody = jsonBody!
+        
+        //INITIATE TASK
+        let task = session.dataTask(with: request) { (data, response, _) in
+            guard let code = (response as? HTTPURLResponse) else {return}
+            self.status = code.statusCode
+            
+            guard let patchedTrip = data else {return}
+            self.trip = patchedTrip
+        }
+        
+        task.resume()
+        
+    }
+    
 }

@@ -101,7 +101,7 @@ enum Resource {
         let body = ["trip_destination": trip.destination,
                     "trip_creator": trip.creator,
                     "trip_attendees": trip.attendees,
-                    "did_attend": trip.didAttend] as [String : Any]
+                    "did_attend": trip.didAttend] as [String: Any]
         
         return body
     }
