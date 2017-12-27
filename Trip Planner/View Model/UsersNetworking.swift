@@ -20,10 +20,10 @@ class UsersNetworking {
     let session = URLSession.shared
     
     //BASE URL BY WHICH ALL OTHERS BRANCH OFF
-    let baseUrl = URL(string: "https://trip-planner-cm.herokuapp.com")
+    let baseUrl = URL(string: "http://127.0.0.1:5000")
     
     
-    func authentication(user: User,resource: Resource, completion: @escaping (User)->()) {
+    func authentication(user: User,resource: Resource, completion: @escaping (HTTPURLResponse)->()) {
 
         //ATTAIN URL PATH TO USERS RESOURCE
         let fullUrl = baseUrl?.appendingPathComponent(resource.urlPath())
@@ -31,16 +31,20 @@ class UsersNetworking {
         //CREATE REQUEST
         var request = URLRequest(url: fullUrl!)
         
+        //SET HTTPMETHOD AS GET
+        request.httpMethod = resource.method().0
+        
         //ADD AUTHENTICATION HEADERS
-        request.allHTTPHeaderFields = resource.userAuthenticationHeaders(username: user.username, password: user.username)
+        request.allHTTPHeaderFields = resource.userAuthenticationHeaders(username: user.username, password: user.password)
         
         //INITIATE DATATASK & RETRIEVE STATUS CODE
-        let task = session.dataTask(with: request) { (data, response, _) in
+        session.dataTask(with: request) { (_, response, _) in
             guard let code = (response as? HTTPURLResponse) else {return}
-            self.status = code.statusCode
-        }
         
-        task.resume()
+            completion(code)
+            
+        }.resume()
+        
     }
     
     
@@ -52,6 +56,9 @@ class UsersNetworking {
         
         //CREATE REQUEST
         var request = URLRequest(url: fullUrl!)
+        
+        //SET HTTPMETHOD AS GET
+        request.httpMethod = resource.method().1
         
         //ADD NEW USER WITH HTTPBODY FIELD
         let body = resource.userHttpBody(user: user)

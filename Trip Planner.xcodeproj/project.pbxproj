@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5B9EB0F510764E587A44FF82 /* Pods_Trip_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECE57CF3C5868F8FCFCB95B /* Pods_Trip_Planner.framework */; };
+		F615220D1FF2CBA700F65C3C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F615220C1FF2CBA700F65C3C /* LogInViewController.swift */; };
+		F615220F1FF2CBBA00F65C3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F615220E1FF2CBBA00F65C3C /* SignUpViewController.swift */; };
+		F61522111FF2DF0E00F65C3C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61522101FF2DF0E00F65C3C /* UserProfileViewController.swift */; };
 		F64A3F231FF1E39500E2D97D /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A3F221FF1E39500E2D97D /* Users.swift */; };
 		F64A3F251FF1E50800E2D97D /* Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A3F241FF1E50800E2D97D /* Trips.swift */; };
 		F64A3F291FF1EB8400E2D97D /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A3F281FF1EB8400E2D97D /* Routes.swift */; };
 		F69A25A71FF2211600A5DA32 /* UsersNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A25A61FF2211600A5DA32 /* UsersNetworking.swift */; };
 		F69A25A91FF2315C00A5DA32 /* TripsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A25A81FF2315C00A5DA32 /* TripsNetworking.swift */; };
 		F6A506481FEC2ED400AD2DAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A506471FEC2ED400AD2DAD /* AppDelegate.swift */; };
-		F6A5064A1FEC2ED400AD2DAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A506491FEC2ED400AD2DAD /* ViewController.swift */; };
 		F6A5064D1FEC2ED400AD2DAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6A5064B1FEC2ED400AD2DAD /* Main.storyboard */; };
 		F6A5064F1FEC2ED400AD2DAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6A5064E1FEC2ED400AD2DAD /* Assets.xcassets */; };
 		F6A506521FEC2ED400AD2DAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6A506501FEC2ED400AD2DAD /* LaunchScreen.storyboard */; };
@@ -25,6 +27,9 @@
 		163F4E976040F7FA68E441F9 /* Pods-Trip Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trip Planner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trip Planner/Pods-Trip Planner.release.xcconfig"; sourceTree = "<group>"; };
 		33A0BEFB144F522F6FB1C2DD /* Pods-Trip Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trip Planner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trip Planner/Pods-Trip Planner.debug.xcconfig"; sourceTree = "<group>"; };
 		3ECE57CF3C5868F8FCFCB95B /* Pods_Trip_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trip_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F615220C1FF2CBA700F65C3C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		F615220E1FF2CBBA00F65C3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F61522101FF2DF0E00F65C3C /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		F64A3F221FF1E39500E2D97D /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		F64A3F241FF1E50800E2D97D /* Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trips.swift; sourceTree = "<group>"; };
 		F64A3F281FF1EB8400E2D97D /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
@@ -32,7 +37,6 @@
 		F69A25A81FF2315C00A5DA32 /* TripsNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsNetworking.swift; sourceTree = "<group>"; };
 		F6A506441FEC2ED400AD2DAD /* Trip Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A506471FEC2ED400AD2DAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F6A506491FEC2ED400AD2DAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F6A5064C1FEC2ED400AD2DAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F6A5064E1FEC2ED400AD2DAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6A506511FEC2ED400AD2DAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +73,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F615220B1FF2CB5B00F65C3C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F615220C1FF2CBA700F65C3C /* LogInViewController.swift */,
+				F615220E1FF2CBBA00F65C3C /* SignUpViewController.swift */,
+				F61522101FF2DF0E00F65C3C /* UserProfileViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		F6591BD21FEE10C700B6E4C3 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,10 +116,10 @@
 		F6A506461FEC2ED400AD2DAD /* Trip Planner */ = {
 			isa = PBXGroup;
 			children = (
+				F615220B1FF2CB5B00F65C3C /* View Controllers */,
 				F6591BD21FEE10C700B6E4C3 /* View Model */,
 				F6A506591FEC4D8C00AD2DAD /* Custom Views */,
 				F6A506471FEC2ED400AD2DAD /* AppDelegate.swift */,
-				F6A506491FEC2ED400AD2DAD /* ViewController.swift */,
 				F6A5064B1FEC2ED400AD2DAD /* Main.storyboard */,
 				F6A5064E1FEC2ED400AD2DAD /* Assets.xcassets */,
 				F6A506501FEC2ED400AD2DAD /* LaunchScreen.storyboard */,
@@ -252,11 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F64A3F251FF1E50800E2D97D /* Trips.swift in Sources */,
+				F61522111FF2DF0E00F65C3C /* UserProfileViewController.swift in Sources */,
 				F69A25A71FF2211600A5DA32 /* UsersNetworking.swift in Sources */,
+				F615220D1FF2CBA700F65C3C /* LogInViewController.swift in Sources */,
 				F69A25A91FF2315C00A5DA32 /* TripsNetworking.swift in Sources */,
+				F615220F1FF2CBBA00F65C3C /* SignUpViewController.swift in Sources */,
 				F64A3F291FF1EB8400E2D97D /* Routes.swift in Sources */,
 				F64A3F231FF1E39500E2D97D /* Users.swift in Sources */,
-				F6A5064A1FEC2ED400AD2DAD /* ViewController.swift in Sources */,
 				F6A506481FEC2ED400AD2DAD /* AppDelegate.swift in Sources */,
 				F6A5065B1FEC4ED600AD2DAD /* CustomButton.swift in Sources */,
 			);

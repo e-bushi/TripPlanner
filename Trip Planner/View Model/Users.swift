@@ -10,7 +10,7 @@ import Foundation
 
 
 struct User {
-    var id: String
+    var id: String?
     var username: String
     var password: String
 }
