@@ -49,25 +49,21 @@ class LogInViewController: UIViewController {
         let credentials = retrieveUserCredentials()
         let user = User(id: "", username: credentials.0, password: credentials.1)
         
-            self.network.authentication(user: user, resource: .user) {(code) in
-                if code.statusCode == 200 {
-                    
-                    self.performSegue(withIdentifier: "loggedIn", sender: self)
-                    
-                } else {
-                    print(code)
-                }
+        self.network.authentication(user: user, resource: .user) {(code) in
+            if code.statusCode == 200 {
+                
+                self.performSegue(withIdentifier: "loggedIn", sender: self)
+                
+            } else {
+                print(code)
             }
-
-        
-        
+        }
     }
     
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loggedIn" {
-            let destinationVC = segue.destination as! UserProfileViewController
-            destinationVC.name = "Chris"
+            let userProVC = segue.destination as! UserProfileViewController
+            userProVC.labelval = "Logged In"
         }
     }
 

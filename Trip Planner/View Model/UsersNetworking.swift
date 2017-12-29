@@ -49,7 +49,7 @@ class UsersNetworking {
     
     
     
-    func postUser(user: User, resource: Resource, completion: @escaping (User)->()) {
+    func postUser(user: User, resource: Resource, completion: @escaping (HTTPURLResponse)->()) {
         
         //ATTAIN URL PATH TO USERS RESOURCE
         let fullUrl = baseUrl?.appendingPathComponent(resource.urlPath())
@@ -69,16 +69,15 @@ class UsersNetworking {
         //ASSIGN SERIALIZED BODY TO REQUEST
         request.httpBody = jsonBody!
         
-        //INITIATE DATATASK
-        let task = session.dataTask(with: request) { (data, response, _) in
-            guard let code = (response as? HTTPURLResponse) else {return}
-            self.status = code.statusCode
-            
-            guard let postedUser = data else {return}
-            self.user = postedUser
-        }
+        //CREATE HEADER
+        request.allHTTPHeaderFields = resource.userPostHeaderField()
         
-        task.resume()
+        //INITIATE DATATASK
+        session.dataTask(with: request) { (_, response, _) in
+            guard let code = (response as? HTTPURLResponse) else {return}
+            
+            completion(code)
+        }.resume()
     }
     
     

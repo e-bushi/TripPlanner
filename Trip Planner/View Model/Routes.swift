@@ -82,6 +82,10 @@ enum Resource {
         return header
     }
     
+    //--------------------------------------------------------------//
+    
+    
+    
     //WHEN USER CREATES(POST) A TRIP, THIS METHOD CREATES THE HTTP BODY FIELD
     func tripPostBody(trip: Trip) -> [String: Any] {
         let body = ["trip_destination": trip.destination,
