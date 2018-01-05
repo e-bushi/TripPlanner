@@ -250,6 +250,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="getPastTrips:" destination="MYg-cu-hWj" eventType="touchUpInside" id="low-Bm-nKK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y7E-Ez-rMH">
                                         <rect key="frame" x="0.0" y="295" width="130" height="35.5"/>
@@ -263,6 +266,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="getUpcomingTrips:" destination="MYg-cu-hWj" eventType="touchUpInside" id="Aci-UH-Umf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zRP-dy-mXA">
                                         <rect key="frame" x="0.0" y="367.5" width="130" height="35.5"/>
@@ -285,6 +291,20 @@
                                     <constraint firstItem="zRP-dy-mXA" firstAttribute="width" secondItem="luE-B6-ZnP" secondAttribute="height" multiplier="10:31" id="63U-h5-2Uz"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yLW-zC-QvV">
+                                <rect key="frame" x="229" y="617" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sign Out">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="15" name="Futura-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -311,7 +331,7 @@
                     <connections>
                         <outlet property="confirmationLabel" destination="ZtS-d6-c7g" id="nvF-yU-a98"/>
                         <outlet property="profileImage" destination="MRY-Gj-sj0" id="TfE-T1-uPP"/>
-                        <segue destination="YFu-Re-sjJ" kind="show" id="dvE-3M-oe2"/>
+                        <segue destination="YFu-Re-sjJ" kind="show" identifier="trips" id="dvE-3M-oe2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHD-Mv-mCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,15 +352,26 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <visualEffectView key="backgroundView" opaque="NO" contentMode="scaleToFill" id="1Ux-mS-RPx">
+                            <rect key="frame" x="0.0" y="-20" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TRw-Bp-6SM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <vibrancyEffect>
+                                <blurEffect style="light"/>
+                            </vibrancyEffect>
+                        </visualEffectView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trip" id="k8c-MF-5iZ">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trip" id="k8c-MF-5iZ" customClass="TripCollectionViewCell" customModule="Trip_Planner" customModuleProvider="target">
                                 <rect key="frame" x="30" y="0.0" width="315" height="584"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="315" height="584"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-CY-z9R">
+                                        <wkWebView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-CY-z9R">
                                             <rect key="frame" x="37" y="57" width="240" height="240"/>
                                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -417,6 +448,12 @@
                                     <constraint firstItem="59d-SU-OPW" firstAttribute="centerX" secondItem="k8c-MF-5iZ" secondAttribute="centerX" id="fhK-8n-oS1"/>
                                     <constraint firstAttribute="bottom" secondItem="59d-SU-OPW" secondAttribute="bottom" constant="41" id="nIp-eh-sGY"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="attendeesLabel" destination="oM5-nq-fRD" id="lkW-Qg-eMq"/>
+                                    <outlet property="destinationImage" destination="bCI-CY-z9R" id="Zfb-ci-w0C"/>
+                                    <outlet property="didAttendLabel" destination="QsF-wz-Ylb" id="O1n-fd-olE"/>
+                                    <outlet property="locationLabel" destination="m3M-8I-ntq" id="Y8j-WQ-n6Y"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -425,12 +462,30 @@
                         </connections>
                     </collectionView>
                     <connections>
+                        <outlet property="noTripsPopUp" destination="1lf-AV-bPT" id="Sj9-0y-4iL"/>
                         <outlet property="tripCollection" destination="DwP-li-TqI" id="fVH-uv-mub"/>
+                        <outlet property="visualEffectOne" destination="1Ux-mS-RPx" id="Cqd-hX-mgk"/>
+                        <segue destination="MYg-cu-hWj" kind="show" identifier="goBack" id="r5H-cd-cEZ"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5T-jg-DS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="1lf-AV-bPT" userLabel="noPastTripsPopUp">
+                    <rect key="frame" x="0.0" y="0.0" width="270" height="500"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="You haven't attended any trips yet" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huw-we-fKh">
+                            <rect key="frame" x="14" y="91" width="240" height="186"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="WJ8-nr-5VC"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="2156" y="158.77061469265368"/>
+            <point key="canvasLocation" x="2514" y="158"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="iF6-jP-1vy">
@@ -629,6 +684,6 @@
         <image name="twitter" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="50q-cd-Q1R"/>
+        <segue reference="r5H-cd-cEZ"/>
     </inferredMetricsTieBreakers>
 </document>

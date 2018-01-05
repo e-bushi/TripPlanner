@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var registerAccount: CustomButton!
     
+    //HOLDS NEW SIGNEE CREDENTIALS (username, password)
     var credentials: (String, String)?
     
     
@@ -52,7 +53,7 @@ class SignUpViewController: UIViewController {
         if segue.identifier == "signedIn" {
             let userProVC = segue.destination as! UserProfileViewController
             
-            userProVC.labelval = credentials?.0
+            userProVC.usernamelabelval = credentials?.0
             
         }
     }

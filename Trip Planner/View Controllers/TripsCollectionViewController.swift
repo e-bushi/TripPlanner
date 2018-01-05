@@ -12,7 +12,27 @@ private let reuseIdentifier = "trip"
 
 class TripsCollectionViewController: UICollectionViewController {
     
+    //HOLDS THE NAME OF USER
+    var username: String!
+    
+    
+    //SETUP TRIPS NETWORK
+    var tripsNetwork = TripsNetworking()
+    
+    //TRIP RESOURCE
+    var trip: Trip?
+    
+    //TRIP ATTENDANCE
+    var attendance: Bool?
+    
+    //HOLDS LIST OF TRIPS
     var list = [Trip]()
+    
+    //VISUAL EFFECT
+    @IBOutlet weak var visualEffectOne: UIVisualEffectView!
+    
+    //POP UP TO INFORM USER THAT THERE ISNT ANY PAST TRIPS
+    @IBOutlet var noTripsPopUp: UIView!
     
     
     
@@ -22,22 +42,53 @@ class TripsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tripCollection.dataSource = self
+        tripCollection.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(TripCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
         tripCollection.backgroundColor = backgroundColor
         
+        //SET INTIAL TRIP VALUES
+        setUpTripValues()
+        
+        tripsNetwork.get(trip: trip!, resource: .trips) { (trips) in
+            DispatchQueue.main.async {
+                self.list.append(trips)
+                self.tripCollection.reloadData()
+            }
+        }
+        
+        
+        
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setUpTripValues() {
+        self.trip?.creator = username!
+        self.trip?.didAttend = attendance!
+    }
+    
+    func noTripsAnimation() {
+        if list.count == 0 {
+            self.view.bringSubview(toFront: visualEffectOne)
+            
+            visualEffectOne.contentView.addSubview(noTripsPopUp)
+            
+            noTripsPopUp.center.x = visualEffectOne.contentView.center.x
+            
+            noTripsPopUp.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            noTripsPopUp.alpha = 0
+            
+            UIView.animate(withDuration: <#T##TimeInterval#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+            
+        }
     }
 
     /*
@@ -64,7 +115,7 @@ class TripsCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TripCollectionViewCell
     
         // Configure the cell
     

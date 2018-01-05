@@ -12,15 +12,16 @@ class UserProfileViewController: UIViewController {
 
     
     @IBOutlet weak var confirmationLabel: UILabel!
-    
+    var usernamelabelval: String!
     
     @IBOutlet weak var profileImage: UIImageView!
     
     
+    //ATTENDANCE INFORMATION TO SEND IN SEGUE
+    var attendance: Bool?
     
     
     
-    var labelval: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,35 @@ class UserProfileViewController: UIViewController {
         profileImage.layer.masksToBounds = true
         
         
-        confirmationLabel.text = labelval
+        confirmationLabel.text = usernamelabelval
     }
     
     
+    @IBAction func getPastTrips(_ sender: Any) {
+        attendance = true
+        
+        performSegue(withIdentifier: "trips", sender: self)
+        
+    }
     
     
-
+    @IBAction func getUpcomingTrips(_ sender: Any) {
+        attendance = false
+        
+        performSegue(withIdentifier: "trips", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "trips" {
+            let TripsCVC = segue.destination as! TripsCollectionViewController
+            
+            TripsCVC.username = confirmationLabel.text!
+            
+            if let didAttend = attendance {
+                TripsCVC.attendance = didAttend
+            }
+        }
+    }
+    
 
 }

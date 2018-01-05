@@ -20,7 +20,7 @@ class UsersNetworking {
     let session = URLSession.shared
     
     //BASE URL BY WHICH ALL OTHERS BRANCH OFF
-    let baseUrl = URL(string: "http://127.0.0.1:5000")
+    let baseUrl = URL(string: "https://trip-planner-cm.herokuapp.com")
     
     
     func authentication(user: User,resource: Resource, completion: @escaping (HTTPURLResponse)->()) {

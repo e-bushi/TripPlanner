@@ -21,7 +21,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     //HOLDS USER INFO
-    
+    var credentials: (String, String)?
     
     //ESTABLISH USER NETWORK
     var network = UsersNetworking()
@@ -46,8 +46,8 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func initiateAuthentication(_ sender: Any) {
-        let credentials = retrieveUserCredentials()
-        let user = User(id: "", username: credentials.0, password: credentials.1)
+//        let credentials = retrieveUserCredentials()
+        let user = User(id: "", username: credentials!.0, password: credentials!.1)
         
         self.network.authentication(user: user, resource: .user) {(code) in
             if code.statusCode == 200 {
@@ -63,7 +63,7 @@ class LogInViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loggedIn" {
             let userProVC = segue.destination as! UserProfileViewController
-            userProVC.labelval = "Logged In"
+            userProVC.usernamelabelval = credentials?.0
         }
     }
 

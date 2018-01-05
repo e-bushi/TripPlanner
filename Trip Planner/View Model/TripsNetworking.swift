@@ -63,8 +63,8 @@ class TripsNetworking {
         
         //INITIATE TASK
         let task = session.dataTask(with: request) { (data, _, _) in
-            guard let fetchedUser = data else {return}
-            self.trip = fetchedUser
+            guard let fetchedTrip = data else {return}
+            self.trip = fetchedTrip
         }
         
         task.resume()
