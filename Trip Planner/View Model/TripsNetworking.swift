@@ -14,14 +14,17 @@ class TripsNetworking {
     //OPTIONAL TO HOLD STATUS CODES
     var status: Int?
     
-    //OPTIONAL TO STORE USERS
+    //OPTIONAL TO STORE TRIPS
+    var trips: [Trip]?
+    
+    //
     var trip: Data?
     
     //SET UP SESSION
     let session = URLSession.shared
     
     //BASE URL PATH TO TRIPS RESOURCES
-    let baseURL = URL(string: "https://trip-planner-cm.herokuapp.com")
+    let baseURL = URL(string: "http://127.0.0.1:5000")
     
     func post(trip: Trip, resource: Resource, completion: @escaping (Trip)->()) {
         //SET UP EXTENDED PATH
@@ -51,7 +54,7 @@ class TripsNetworking {
         task.resume()
     }
     
-    func get(trip: Trip, resource: Resource, completion: @escaping (Trip)->()) {
+    func get(trip: Trip, resource: Resource, completion: @escaping ([Trip])->()) {
         //SET UP EXTENDED PATH
         let fullURL = baseURL?.appendingPathComponent(resource.urlPath())
         
@@ -63,8 +66,13 @@ class TripsNetworking {
         
         //INITIATE TASK
         let task = session.dataTask(with: request) { (data, _, _) in
-            guard let fetchedTrip = data else {return}
-            self.trip = fetchedTrip
+            if let fetchedTrips = data {
+                let tripList = try? JSONDecoder().decode([Trip].self, from: fetchedTrips)
+                
+                self.trips = tripList
+            }
+            
+            completion(self.trips!)
         }
         
         task.resume()

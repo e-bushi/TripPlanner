@@ -15,6 +15,8 @@
 		F637CC281FF41D6F0057D30F /* iu-3.png in Resources */ = {isa = PBXBuildFile; fileRef = F637CC271FF41D6F0057D30F /* iu-3.png */; };
 		F637CC2E1FF5D4D40057D30F /* TripsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F637CC2D1FF5D4D40057D30F /* TripsCollectionViewController.swift */; };
 		F63AE7411FFEF7F1002C27E6 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AE7401FFEF7F1002C27E6 /* TripCollectionViewCell.swift */; };
+		F63AE74320002FFD002C27E6 /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AE74220002FFD002C27E6 /* TripsTableViewController.swift */; };
+		F63AE745200056D9002C27E6 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AE744200056D9002C27E6 /* TripTableViewCell.swift */; };
 		F64A3F231FF1E39500E2D97D /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A3F221FF1E39500E2D97D /* Users.swift */; };
 		F64A3F251FF1E50800E2D97D /* Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A3F241FF1E50800E2D97D /* Trips.swift */; };
 		F64A3F291FF1EB8400E2D97D /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A3F281FF1EB8400E2D97D /* Routes.swift */; };
@@ -38,6 +40,8 @@
 		F637CC271FF41D6F0057D30F /* iu-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iu-3.png"; sourceTree = "<group>"; };
 		F637CC2D1FF5D4D40057D30F /* TripsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsCollectionViewController.swift; sourceTree = "<group>"; };
 		F63AE7401FFEF7F1002C27E6 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
+		F63AE74220002FFD002C27E6 /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
+		F63AE744200056D9002C27E6 /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		F64A3F221FF1E39500E2D97D /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		F64A3F241FF1E50800E2D97D /* Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trips.swift; sourceTree = "<group>"; };
 		F64A3F281FF1EB8400E2D97D /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 				F615220E1FF2CBBA00F65C3C /* SignUpViewController.swift */,
 				F61522101FF2DF0E00F65C3C /* UserProfileViewController.swift */,
 				F637CC2D1FF5D4D40057D30F /* TripsCollectionViewController.swift */,
+				F63AE74220002FFD002C27E6 /* TripsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				F6A5065A1FEC4ED600AD2DAD /* CustomButton.swift */,
 				F637CC251FF413D50057D30F /* GradientView.swift */,
 				F63AE7401FFEF7F1002C27E6 /* TripCollectionViewCell.swift */,
+				F63AE744200056D9002C27E6 /* TripTableViewCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -284,8 +290,10 @@
 				F637CC261FF413D50057D30F /* GradientView.swift in Sources */,
 				F69A25A71FF2211600A5DA32 /* UsersNetworking.swift in Sources */,
 				F615220D1FF2CBA700F65C3C /* LogInViewController.swift in Sources */,
+				F63AE74320002FFD002C27E6 /* TripsTableViewController.swift in Sources */,
 				F69A25A91FF2315C00A5DA32 /* TripsNetworking.swift in Sources */,
 				F615220F1FF2CBBA00F65C3C /* SignUpViewController.swift in Sources */,
+				F63AE745200056D9002C27E6 /* TripTableViewCell.swift in Sources */,
 				F637CC2E1FF5D4D40057D30F /* TripsCollectionViewController.swift in Sources */,
 				F64A3F291FF1EB8400E2D97D /* Routes.swift in Sources */,
 				F64A3F231FF1E39500E2D97D /* Users.swift in Sources */,

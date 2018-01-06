@@ -46,7 +46,7 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func initiateAuthentication(_ sender: Any) {
-//        let credentials = retrieveUserCredentials()
+        credentials = retrieveUserCredentials()
         let user = User(id: "", username: credentials!.0, password: credentials!.1)
         
         self.network.authentication(user: user, resource: .user) {(code) in
@@ -63,7 +63,7 @@ class LogInViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loggedIn" {
             let userProVC = segue.destination as! UserProfileViewController
-            userProVC.usernamelabelval = credentials?.0
+            userProVC.usernamelabelval = credentials!.0
         }
     }
 

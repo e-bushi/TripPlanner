@@ -20,7 +20,7 @@ class TripsCollectionViewController: UICollectionViewController {
     var tripsNetwork = TripsNetworking()
     
     //TRIP RESOURCE
-    var trip: Trip?
+    var trip = Trip(creators: "", attended: false)
     
     //TRIP ATTENDANCE
     var attendance: Bool?
@@ -30,6 +30,8 @@ class TripsCollectionViewController: UICollectionViewController {
     
     //VISUAL EFFECT
     @IBOutlet weak var visualEffectOne: UIVisualEffectView!
+    
+    var effect: UIVisualEffect!
     
     //POP UP TO INFORM USER THAT THERE ISNT ANY PAST TRIPS
     @IBOutlet var noTripsPopUp: UIView!
@@ -58,12 +60,19 @@ class TripsCollectionViewController: UICollectionViewController {
         //SET INTIAL TRIP VALUES
         setUpTripValues()
         
-        tripsNetwork.get(trip: trip!, resource: .trips) { (trips) in
+        
+        
+        tripsNetwork.get(trip: trip, resource: .trips) { (fetchedTrips) in
             DispatchQueue.main.async {
-                self.list.append(trips)
+                print(fetchedTrips)
+                
+                self.list = fetchedTrips
                 self.tripCollection.reloadData()
             }
         }
+        
+        //ANIMATES POP UP IF LIST EQUALS ZERO
+//        noTripsAnimation()
         
         
         
@@ -71,8 +80,9 @@ class TripsCollectionViewController: UICollectionViewController {
     }
 
     func setUpTripValues() {
-        self.trip?.creator = username!
-        self.trip?.didAttend = attendance!
+        trip.creator = username
+        trip.didAttend = attendance!
+        
     }
     
     func noTripsAnimation() {
@@ -86,7 +96,12 @@ class TripsCollectionViewController: UICollectionViewController {
             noTripsPopUp.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             noTripsPopUp.alpha = 0
             
-            UIView.animate(withDuration: <#T##TimeInterval#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.visualEffectOne.effect = self.effect
+                
+                self.noTripsPopUp.alpha = 1
+                self.noTripsPopUp.transform = .identity
+            })
             
         }
     }
@@ -103,21 +118,23 @@ class TripsCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.list.count
+        return list.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TripCollectionViewCell
     
         // Configure the cell
+        cell.trip = list[indexPath.row]
+        
     
         return cell
     }

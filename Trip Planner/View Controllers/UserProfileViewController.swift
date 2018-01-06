@@ -51,7 +51,7 @@ class UserProfileViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trips" {
-            let TripsCVC = segue.destination as! TripsCollectionViewController
+            let TripsCVC = segue.destination as! TripsTableViewController
             
             TripsCVC.username = confirmationLabel.text!
             

@@ -20,14 +20,13 @@ class TripCollectionViewCell: UICollectionViewCell {
     
     var trip: Trip? {
         didSet {
-            let request = URLRequest(url: trip!.thumbnail)
-            
-            locationLabel.text = trip?.destination
-            didAttendLabel.text = String(describing: trip?.didAttend)
-            attendeesLabel.text = String(describing: trip?.attendees)
+            let request = URLRequest(url: (trip?.thumbnail)!)
+            locationLabel.text = trip!.destination
+            didAttendLabel.text = String(describing: trip!.didAttend)
+            attendeesLabel.text = String(describing: trip!.attendees)
             
             destinationImage.load(request)
-            
         }
     }
+    
 }

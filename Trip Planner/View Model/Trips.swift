@@ -18,6 +18,7 @@ struct Trip: Codable {
     var creator: String
     var attendees: Array<String>
     var didAttend: Bool
+    
 }
 
 extension Trip {
@@ -103,6 +104,19 @@ extension Trip {
         
         //encode creator attendance
         try? tripContainer.encode(didAttend, forKey: .didAttend)
+    }
+    
+    init(creators: String, attended: Bool) {
+        
+        creator = creators
+        didAttend = attended
+        
+        id = ""
+        destination = ""
+        location = []
+        price = 0
+        thumbnail = URL(string: "N/A")!
+        attendees = []
     }
     
 }
